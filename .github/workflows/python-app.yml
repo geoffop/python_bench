@@ -26,3 +26,6 @@ jobs:
     - name: run benchmark
       run: |
         python3 bench.py
+    - name: process data
+      run: |
+        python3 data.py
