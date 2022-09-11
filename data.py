@@ -71,10 +71,13 @@ for file in glob.glob(os.getcwd()+"/results/*.json"):
 df = pd.DataFrame(results)
 df.to_excel("test.xlsx")
 data = df.T.to_dict().values()
-file_contents = ""
-with open("website/src/components/showcase.astro",'r') as f:
-    file_contents = f.read().replace("$[replacemeorfailtobuild]",json.dumps(list(data)))
-with open("website/src/components/showcase.astro",'w') as f:
-    f.write(file_contents)
+print(df.to_html())
+with open("results.html", "w") as f:
+    f.write(df.to_html(classes='table table-stripped'))
+# file_contents = ""
+# with open("website/src/components/showcase.astro",'r') as f:
+#     file_contents = f.read().replace("$[replacemeorfailtobuild]",json.dumps(list(data)))
+# with open("website/src/components/showcase.astro",'w') as f:
+#     f.write(file_contents)
 
 

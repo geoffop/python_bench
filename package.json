@@ -1,0 +1,28 @@
+{
+  "name": "python_bench",
+  "version": "1.0.0",
+  "description": "Python Benchmark Automation",
+  "scripts": {
+    "parcel": "parcel index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geoffop/python_bench.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/geoffop/python_bench/issues"
+  },
+  "homepage": "https://github.com/geoffop/python_bench#readme",
+  "devDependencies": {
+    "node-json2html": "^2.2.2",
+    "parcel": "^2.7.0",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
+    "vm-browserify": "^1.1.2"
+  },
+  "dependencies": {
+    "pivottable": "^2.23.0"
+  }
+}
