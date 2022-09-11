@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Python Benchmark Automation",
   "scripts": {
-    "parcel": "parcel index.html"
+    "parcel": "parcel index.html",
+    "build": "parcel build"
   },
   "repository": {
     "type": "git",
