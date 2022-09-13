@@ -12,6 +12,7 @@ tag_list = filter(
 )  # not a version based on a distro
 tag_list = filter(lambda x: x[0].isdigit(), tag_list)  # is version number
 tag_list = filter(lambda x: x[0] == "3", tag_list)  # python 3
+tag_list = filter(lambda x: not any(y.isalpha() for y in x), tag_list)  # filter out things that have letters
 tag_list = filter(
     lambda x: not x.__contains__("-"), tag_list
 )  # no things like 3-stretch
