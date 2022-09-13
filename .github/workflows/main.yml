@@ -38,6 +38,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 5a4bb5a5bc7410f38fe99baf2d033fb7
-          command: pages publish --project-name=python_bench
-          workingDirectory: dist
+          command: pages publish ./dist --project-name=python_bench
 
