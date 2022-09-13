@@ -22,8 +22,10 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
-        run: |
+        run: 
           python3 bench.py
+      - name: Run a multi-line script
+        run: 
           python3 data.py
       - name: Cloudflare Pages GitHub Action
         uses: cloudflare/pages-action@v1.1.0
