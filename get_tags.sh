@@ -1,8 +1,7 @@
 #!/bin/bash
 
-if [ $# -lt 1 ]
-then
-cat << HELP
+if [ $# -lt 1 ]; then
+    cat <<HELP
 
 dockertags  --  list all tags for a Docker image on a remote registry.
 
@@ -37,8 +36,7 @@ pages=$(expr $count / $pagination + 1)
 # Get all tags one page after the other
 tags=
 i=0
-while [ $i -le $pages ] ;
-do
+while [ $i -le $pages ]; do
     i=$(expr $i + 1)
     if [ -z "$(command -v curl)" ]; then
         page=$(wget -q -O - "$hub?page=$i")
@@ -48,4 +46,4 @@ do
     ptags=$(echo $page | grep -Eo '"name":\s*"[a-zA-Z0-9_.-]+"' | sed -E 's/"name":\s*"([a-zA-Z0-9_.-]+)"/\1/')
     tags="${ptags} $tags"
 done
-echo "${tags}" > tags.txt
+echo "${tags}" >tags.txt
