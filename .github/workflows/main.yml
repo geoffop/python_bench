@@ -21,10 +21,10 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: acquire data
         run: 
           python3 bench.py
-      - name: Run a multi-line script
+      - name: manage data
         run: 
           python3 data.py
       - name: Cloudflare Pages GitHub Action
