@@ -22,10 +22,11 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: acquire data
-        run: 
+        run: |
+          python3 -m pip install -r requirements.txt
           python3 bench.py
       - name: manage data
-        run: 
+        run: |
           python3 data.py
       - name: Cloudflare Pages GitHub Action
         uses: cloudflare/pages-action@v1.1.0
