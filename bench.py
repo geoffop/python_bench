@@ -10,25 +10,21 @@ print(tag_list)
 tag_list = filter(
     lambda x: x[-1].isdigit(), tag_list
 )  # not a version based on a distro
-tag_list = filter(lambda x: x[0].isdigit(), tag_list)  # is version number
 tag_list = filter(lambda x: x[0] == "3", tag_list)  # python 3
-tag_list = filter(lambda x: not any(y.isalpha() for y in x), tag_list)  # filter out things that have letters
 tag_list = filter(
-    lambda x: not x.__contains__("-"), tag_list
-)  # no things like 3-stretch
+    lambda x: not any(y.isalpha() for y in x), tag_list
+)  # filter out things that have letters
 tag_list = filter(
     lambda x: len(x.split(".")) == 3, tag_list
 )  # want just versions with a patch version
 tag_list = filter(
-    lambda x: int(x.split(".")[1]) > 5, tag_list
-)  # 3.5 and below doesnt work with benchmark
+    lambda x: int(x.split(".")[1]) > 6, tag_list
+)  # 3.6 and below doesnt work with benchmark
 for version in tag_list:
+    os.system("podman system prune -a -f")
     os.system(
         f"podman build -f dockerfile -t clean/test:latest --build-arg tag={version}"
     )
-    os.system("podman run $(podman images | awk '{print $1}' | awk 'NR==2')")
-    os.system(
-        "export container=$(podman ps -alq) && podman cp $container:/test/result.json ."
-    )
-    os.system("podman rm $(podman ps --filter status=exited -q)")
-    os.system(f"mkdir --parents ./results && mv ./result.json results/{version}.json")
+    os.system("podman run --name tester clean/test:latest")
+    os.system(f"export container=$(podman ps -alq) && podman cp $container:/test/{version}.json .")
+    os.system(f"mkdir --parents ./results && mv ./{version}.json results/{version}.json")
