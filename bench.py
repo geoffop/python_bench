@@ -6,6 +6,7 @@ os.system(command)
 with open(tag_file) as f:
     tag_list = f.read().split()
 os.remove(tag_file)
+print(tag_list)
 tag_list = filter(
     lambda x: x[-1].isdigit(), tag_list
 )  # not a version based on a distro
