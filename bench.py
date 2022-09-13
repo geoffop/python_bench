@@ -22,7 +22,7 @@ tag_list = filter(
     lambda x: int(x.split(".")[1]) > 5, tag_list
 )  # 3.5 and below doesnt work with benchmark
 for version in tag_list:
-    os.system(f"podman build podmanfile -t clean/test:latest --build-arg tag={version}")
+    os.system(f"podman build -f dockerfile -t clean/test:latest --build-arg tag={version}")
     os.system("podman run $(podman images | awk '{print $1}' | awk 'NR==2')")
     os.system(
         "export container=$(podman ps -alq) && podman cp $container:/test/result.json ."

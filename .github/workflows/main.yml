@@ -24,6 +24,9 @@ jobs:
       - name: acquire data
         run: |
           python3 -m pip install -r requirements.txt
+          bash get_tags.sh python
+          ls -l
+          
           python3 bench.py
       - name: manage data
         run: |
