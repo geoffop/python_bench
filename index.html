@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 
 <head>
-    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <title>Python Benchmark Results</title>
+    <title>Pivot Demo</title>
+    <!-- external libs from cdnjs -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="./node_modules/pivottable/dist/pivot.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="./node_modules/pivottable/dist/pivot.css"> -->
-    <!-- <link rel="stylesheet" href="index.css"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.js"
+        integrity="sha512-XgJh9jgd6gAHu9PcRBBAp0Hda8Tg87zi09Q2639t0tQpFFQhGpeCgaiEFji36Ozijjx9agZxB0w53edOFGCQ0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.css"
+        integrity="sha512-BDStKWno6Ga+5cOFT9BUnl9erQFzfj+Qmr5MDnuGqTQ/QYDO1LPdonnF6V6lBO6JI13wg29/XmPsufxmCJ8TvQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            font-family: Verdana;
+        }
+    </style>
+
+    <!-- optional: mobile support with jqueryui-touch-punch -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 </head>
 
 <body style="text-align:center;" id="body">
@@ -16,5 +31,19 @@
         Python Benchmark Results
     </h1>
     <br><br>
-    <object type="text/html" data="results.html" width="500" height="300"> ></object>
+    <!-- <object type="text/html" data="results.html"></object> -->
+
+    <script type="module" >
+        $(function () {
+            var tpl = $.pivotUtilities.aggregatorTemplates;
+            $("#output").pivotUI(
+                require('./results.json'),
+                {
+                    rows: ["python_ver"],
+                    cols: ["test"],
+                }
+            );
+        });
+    </script>
+    <div id="output" style="margin: 30px; display: flex; justify-content: center;"></div>
 </body>
