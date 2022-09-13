@@ -24,13 +24,11 @@ jobs:
       - name: acquire data
         run: |
           python3 -m pip install -r requirements.txt
-          bash get_tags.sh python
-          ls -l
-          
           python3 bench.py
       - name: manage data
         run: |
           python3 data.py
+          npm run build
       - name: Cloudflare Pages GitHub Action
         uses: cloudflare/pages-action@v1.1.0
         with:
