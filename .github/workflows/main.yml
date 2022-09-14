@@ -1,3 +1,4 @@
+
 # This is a basic workflow to help you get started with Actions
 
 name: CI
@@ -38,5 +39,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 5a4bb5a5bc7410f38fe99baf2d033fb7
-          command: pages publish ./dist --project-name=python_bench
-
+          command: pages publish ./dist --project-name=python-bench
