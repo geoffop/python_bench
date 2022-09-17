@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Python Benchmark Automation",
   "scripts": {
-    "parcel": "parcel index.html",
-    "build": "parcel build index.html"
+    "parcel": "browserify results.json -o bundle.js && parcel index.html",
+    "build": "browserify results.json -o bundle.js && parcel build index.html"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/geoffop/python_bench#readme",
   "devDependencies": {
+    "jquery": "^1.11.4",
+    "jquery-ui": "^1.11.4",
     "node-json2html": "^2.2.2",
     "parcel": "^2.7.0",
     "path-browserify": "^1.0.1",
@@ -24,6 +26,7 @@
     "vm-browserify": "^1.1.2"
   },
   "dependencies": {
+    "browserify": "^17.0.0",
     "pivottable": "^2.23.0"
   }
 }

@@ -131,3 +131,7 @@ node_modules
 .parcel-cache
 results/
 tags.txt
+bundle.js
+results.html
+results.json
+package-lock.json

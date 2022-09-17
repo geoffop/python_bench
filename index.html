@@ -3,10 +3,11 @@
 <head>
     <title>Python Benchmark Results</title>
     <title>Pivot Demo</title>
-    <!-- external libs from cdnjs -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/jquery-ui/dist/jquery-ui.min.js"></script>
+
+    <!-- <script type="module" src="./node_modules/pivottable/dist/pivot.js"></script> -->
+    <!-- <script src="./node_modules/pivottable/dist/pivot.min.css"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.js"
         integrity="sha512-XgJh9jgd6gAHu9PcRBBAp0Hda8Tg87zi09Q2639t0tQpFFQhGpeCgaiEFji36Ozijjx9agZxB0w53edOFGCQ0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -30,10 +31,15 @@
     <h1 style="color:green;">
         Python Benchmark Results
     </h1>
+    <h2>
+        <a href="./results.html">HTML table</a>
+    </h2>
     <br><br>
-    <!-- <object type="text/html" data="results.html"></object> -->
 
+    <script src="bundle.js"></script>
     <script type="module">
+        const isMobile = navigator.userAgentData.mobile;
+        console.log(isMobile)
         $(function () {
             var tpl = $.pivotUtilities.aggregatorTemplates;
             $("#output").pivotUI(
