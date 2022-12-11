@@ -135,3 +135,5 @@ bundle.js
 results.html
 results.json
 package-lock.json
+
+.tox
