@@ -29,7 +29,7 @@ jobs:
           npm install
       - name: acquire data
         run: |
-          python3 bench.py
+          python3 -m tox
       - name: manage data
         run: |
           python3 data.py
