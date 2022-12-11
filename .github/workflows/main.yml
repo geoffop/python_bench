@@ -27,20 +27,14 @@ jobs:
         run: |
           python3 -m pip install -r requirements.txt
           npm install
+      - name: Pyenv Build
+        # You may pin to the exact commit or the version.
+        # uses: gabrielfalcao/pyenv-action@c35d86605f074d0c7ce32e4aa79ef91645a57f14
+        uses: gabrielfalcao/pyenv-action@v11
+        with:
+          default: 3.6.5,3.7.3, 3.2.6
       - name: acquire data
         run: |
-          sudo apt-get update; sudo apt-get install make build-essential libssl-dev zlib1g-dev \
-          libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
-          libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-          curl https://pyenv.run | bash
-          exec $SHELL
-          pyenv install 3.5:latest
-          pyenv install 3.6:latest
-          pyenv install 3.7:latest
-          pyenv install 3.8:latest
-          pyenv install 3.9:latest
-          pyenv install 3.10:latest
-          pyenv install 3.11:latest
           python3 -m tox
       - name: manage data
         run: |
