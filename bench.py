@@ -1,6 +1,6 @@
 import os
 os_ver = os.environ['TOX_ENV_NAME']
-os.system(f"pyperformance run -f -o {os_ver}.json -b 2to3")
+os.system(f"pyperformance run -f -o {os_ver}.json")
 newpath = 'results' 
 if not os.path.exists(newpath):
     os.makedirs(newpath)
