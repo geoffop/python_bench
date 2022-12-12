@@ -4,4 +4,4 @@ os.system(f"pyperformance run -f -o {os_ver}.json -b 2to3,chameleon,docutils,htm
 newpath = 'results' 
 if not os.path.exists(newpath):
     os.makedirs(newpath)
-os.rename(f"{os_ver}.json", f"results/{os_ver}.json")
+os.rename(f"{os_ver}.json", f"{newpath}/{os_ver}.json")

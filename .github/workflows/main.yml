@@ -1,4 +1,3 @@
-
 # This is a basic workflow to help you get started with Actions
 
 name: CI
@@ -11,7 +10,7 @@ on:
   pull_request:
     branches: ["main"]
   schedule:
-    - cron: '00 1 * * 1'  # At 01:00 on Mondays.
+    - cron: "00 1 * * 1" # At 01:00 on Mondays.
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -30,12 +29,9 @@ jobs:
       - name: acquire data
         run: |
           sudo add-apt-repository ppa:deadsnakes/ppa
-          sudo apt-get update && sudo apt-get upgrade -y
-          sudo apt-get install python3.7 python3.7-dev python3.7-venv -y
-          sudo apt-get install python3.8 python3.8-dev python3.8-venv -y
-          sudo apt-get install python3.9 python3.9-dev python3.9-venv -y
-          sudo apt-get install python3.10 python3.10-dev python3.10-venv -y
-          sudo apt-get install python3.11 python3.11-dev python3.11-venv -y
+          sudo apt-get update && sudo apt-get install python3.7 python3.7-dev python3.7-venv \
+            python3.8 python3.8-dev python3.8-venv python3.10 python3.10-dev python3.10-venv \
+            python3.11 python3.11-dev python3.11-venv -y && sudo apt-get upgrade -y
           python3 -m tox
       - name: manage data
         run: |
