@@ -18,13 +18,13 @@
   "homepage": "https://github.com/geoffop/python_bench#readme",
   "devDependencies": {
     "jquery": "^1.11.4",
-    "jquery-ui": "^1.11.4",
-    "node-json2html": "^2.2.2",
-    "parcel": "^2.7.0",
+    "jquery-ui": "^1.13.2",
+    "node-json2html": "^2.2.3",
+    "parcel": "^2.9.1",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
     "vm-browserify": "^1.1.2",
-    "lightningcss": "1.17.0"
+    "lightningcss": "1.20.0"
   },
   "dependencies": {
     "browserify": "^17.0.0",

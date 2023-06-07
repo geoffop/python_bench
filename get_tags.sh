@@ -1,26 +1,8 @@
 #!/bin/bash
-
-if [ $# -lt 1 ]; then
-    cat <<HELP
-
-dockertags  --  list all tags for a Docker image on a remote registry.
-
-EXAMPLE: 
-    - list all tags for ubuntu:
-       dockertags ubuntu
-
-    - list all php tags containing apache:
-       dockertags php apache
-
-HELP
-fi
-
-im="$1"
-
-if [ -z "$(echo "$im" | grep -o '/')" ]; then
-    hub="https://registry.hub.docker.com/v2/repositories/library/$im/tags/"
+if [ -z "$(echo "python" | grep -o '/')" ]; then
+    hub="https://registry.hub.docker.com/v2/repositories/library/python/tags/"
 else
-    hub="https://registry.hub.docker.com/v2/repositories/$im/tags/"
+    hub="https://registry.hub.docker.com/v2/repositories/python/tags/"
 fi
 
 # Get number of pages
