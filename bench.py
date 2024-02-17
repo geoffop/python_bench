@@ -1,11 +1,20 @@
 import os
 import sys
+import pyperf
 
-# Get the environment name from the TOX_ENV_NAME environment variable
+# Get the Python version
 os_ver = '.'.join(map(str, sys.version_info[:3]))
 
-# Run pyperformance with specified benchmarks and output to a JSON file
-os.system(f"pyperformance run -f -o {os_ver}.json -b 2to3,chameleon,docutils,html5lib,tornado_http")
+# Create a runner object
+runner = pyperf.Runner()
+
+# Add benchmarks
+benchmarks = ['2to3', 'chameleon', 'docutils', 'html5lib', 'tornado_http']
+for bench in benchmarks:
+    runner.bench_time_func(bench, lambda: os.system(f"pyperformance run -f -b {bench}"))
+
+# Save results to a JSON file
+runner.save(f"{os_ver}.json")
 
 # Create a 'results' directory if it doesn't exist
 newpath = 'results'
