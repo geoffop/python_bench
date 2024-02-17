@@ -5,4 +5,4 @@ import subprocess
 os_ver = '.'.join(map(str, sys.version_info[:3]))
 
 # Run pyperformance with specified benchmarks and output to a JSON file
-subprocess.run(["python -m pyperformance", "run", "-f", "-o", f"{os_ver}.json", "-b", "2to3,chameleon,docutils,html5lib,tornado_http"], check=True)
+subprocess.run(["pyperformance", "run", "-f", "-o", f"{os_ver}.json", "-b", "2to3,chameleon,docutils,html5lib,tornado_http"], check=True)
