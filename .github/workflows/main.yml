@@ -39,10 +39,3 @@ jobs:
         run: |
           python data.py
           # npm run build
-
-      - name: Publish to Cloudflare
-        uses: cloudflare/wrangler-action@2.0.0
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: 5a4bb5a5bc7410f38fe99baf2d033fb7
-          command: pages publish ./dist --project-name=python-bench
