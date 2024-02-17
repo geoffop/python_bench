@@ -17,7 +17,7 @@ jobs:
     continue-on-error: true
     strategy:
       matrix:
-        os: [windows-latest]
+        os: [windows-latest, macos-latest]
         python-version: ['3.8', '3.9', '3.10','3.11','3.12', 'pypy-3.7', 'pypy-3.8']
     steps:
       - uses: actions/checkout@v3
@@ -34,6 +34,21 @@ jobs:
       - name: Run bench.py
         run: |
           python bench.py
+
+      - name: Upload benchmark results
+        uses: actions/upload-artifact@v2
+        with:
+          name: benchmark-results-${{ matrix.python-version }}
+          path: ./*.json
+
+  manage_data:
+    needs: build
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v2
 
       - name: Manage data
         run: |
