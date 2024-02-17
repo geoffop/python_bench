@@ -33,7 +33,7 @@ jobs:
 
       - name: Run bench.py
         run: |
-          python bench.py ${{ matrix.os }} ${{ matrix.python-version }}
+          python bench.py --os_type ${{ matrix.os }} --python_ver ${{ matrix.python-version }}
 
       - name: Upload benchmark results
         uses: actions/upload-artifact@v2
