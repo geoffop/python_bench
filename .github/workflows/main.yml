@@ -33,12 +33,12 @@ jobs:
 
       - name: Run bench.py
         run: |
-          python bench.py
+          python bench.py ${{ matrix.os }} ${{ matrix.python-version }}
 
       - name: Upload benchmark results
         uses: actions/upload-artifact@v2
         with:
-          name: benchmark-results-${{ matrix.python-version }}
+          name: benchmark-results-${{ matrix.python-version }}-${{ matrix.os }}
           path: ./*.json
 
   manage_data:
