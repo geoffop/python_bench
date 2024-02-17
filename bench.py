@@ -1,7 +1,8 @@
 import os
+import sys
 
 # Get the environment name from the TOX_ENV_NAME environment variable
-os_ver = os.environ.get('TOX_ENV_NAME', '')
+os_ver = '.'.join(map(str, sys.version_info[:3]))
 
 # Run pyperformance with specified benchmarks and output to a JSON file
 os.system(f"pyperformance run -f -o {os_ver}.json -b 2to3,chameleon,docutils,html5lib,tornado_http")
