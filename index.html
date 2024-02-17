@@ -1,68 +1,45 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
-  <title>Python Benchmark Results</title>
-  <title>Pivot Demo</title>
-  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="./node_modules/jquery-ui/dist/jquery-ui.min.js"></script>
-
-  <!-- <script type="module" src="./node_modules/pivottable/dist/pivot.js"></script> -->
-  <!-- <script src="./node_modules/pivottable/dist/pivot.min.css"></script> -->
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.js"
-    integrity="sha512-XgJh9jgd6gAHu9PcRBBAp0Hda8Tg87zi09Q2639t0tQpFFQhGpeCgaiEFji36Ozijjx9agZxB0w53edOFGCQ0g=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  ></script>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.css"
-    integrity="sha512-BDStKWno6Ga+5cOFT9BUnl9erQFzfj+Qmr5MDnuGqTQ/QYDO1LPdonnF6V6lBO6JI13wg29/XmPsufxmCJ8TvQ=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
-
-  <style>
-    body {
-      font-family: Verdana;
-    }
-  </style>
-
-  <!-- optional: mobile support with jqueryui-touch-punch -->
-  <script
-    type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"
-  ></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Benchmark Results</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.js"
+            integrity="sha512-XgJh9jgd6gAHu9PcRBBAp0Hda8Tg87zi09Q2639t0tQpFFQhGpeCgaiEFji36Ozijjx9agZxB0w53edOFGCQ0g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.23.0/pivot.min.css"
+          integrity="sha512-BDStKWno6Ga+5cOFT9BUnl9erQFzfj+Qmr5MDnuGqTQ/QYDO1LPdonnF6V6lBO6JI13wg29/XmPsufxmCJ8TvQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        body {
+            font-family: Verdana;
+        }
+    </style>
+    <!-- Optional: mobile support with jqueryui-touch-punch -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 </head>
 
-<body style="text-align: center" id="body">
+<body style="text-align: center">
   <h1 style="color: green">Python Benchmark Results</h1>
-  <h2>
-    <a href="./results.html">HTML table</a>
-  </h2>
+  <h2><a href="./results.html">HTML table</a></h2>
   <br /><br />
 
   <script src="bundle.js"></script>
   <script type="module">
-    const isMobile = navigator.userAgentData.mobile;
-    console.log(isMobile);
-    $(function () {
-      var tpl = $.pivotUtilities.aggregatorTemplates;
-      $("#output").pivotUI(require("./results.json"), {
-        rows: ["python_ver"],
-        cols: ["test"],
+      const isMobile = navigator.userAgentData.mobile;
+      console.log(isMobile);
+      $(function () {
+          $("#output").pivotUI(require("./results.json"), {
+              rows: ["python_ver"],
+              cols: ["test"],
+          });
       });
-    });
   </script>
-  <div
-    id="output"
-    style="margin: 30px; display: flex; justify-content: center"
-  ></div>
+  <div id="output" style="margin: 30px; display: flex; justify-content: center"></div>
+
   <!-- Cloudflare Web Analytics -->
-  <script
-    defer
-    src="https://static.cloudflareinsights.com/beacon.min.js"
-    data-cf-beacon='{"token": "1e0d1904bded41abae9e9b9a30f14206"}'
-  ></script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "1e0d1904bded41abae9e9b9a30f14206"}'></script>
   <!-- End Cloudflare Web Analytics -->
 </body>

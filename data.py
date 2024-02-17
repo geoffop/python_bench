@@ -1,33 +1,37 @@
-from pathlib import Path
 from pyperf._bench import BenchmarkSuite
-import glob, os
+import glob
+import os
 import pandas as pd
 
+# Initialize an empty list to store benchmark results
 results = []
-for file in glob.glob(os.getcwd() + "/results/*.json"):
-    ver = file.replace(".json", "").split("/")[-1]
-    benchmark_names = []
-    first = True
+
+# Iterate over JSON files in the "results" directory
+for file in glob.glob(os.path.join(os.getcwd(), "results", "*.json")):
+    # Extract the Python version from the file path
+    ver = os.path.splitext(os.path.basename(file))[0]
+
+    # Load the benchmark suite from the JSON file
     benchmark_suite = BenchmarkSuite.load(file)
 
-    if first:
-        benchmark_names = benchmark_suite.get_benchmark_names()
-        first = False
-    bench_name = Path(benchmark_suite.filename).name
+    # Get benchmark names
+    benchmark_names = benchmark_suite.get_benchmark_names()
 
+    # Process each benchmark
     for name in benchmark_names:
         try:
             benchmark = benchmark_suite.get_benchmark(name)
-            if benchmark is not None:
+            if benchmark:
+                # Extract values from benchmark runs
                 for run in benchmark.get_values():
                     results.append({"test": name, "value": run, "python_ver": ver})
         except KeyError:
-            # Bonus benchmark! ignore.
+            # Ignore bonus benchmarks
             pass
 
+# Create a DataFrame from the results
 df = pd.DataFrame(results)
-data = df.T.to_dict().values()
-with open("results.html", "w") as f:
-    f.write(df.to_html())
-with open("results.json", "w") as f:
-    f.write(df.to_json(orient="records"))
+
+# Write results to HTML and JSON files
+df.to_html("results.html", index=False)
+df.to_json("results.json", orient="records")

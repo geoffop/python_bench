@@ -3,3 +3,4 @@ seaborn
 openpyxl
 pyperformance
 tox
+requests
