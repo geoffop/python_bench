@@ -2,5 +2,3 @@ pandas
 seaborn
 openpyxl
 pyperformance
-tox
-requests
