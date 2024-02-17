@@ -136,4 +136,4 @@ results.html
 results.json
 package-lock.json
 
-.tox
+*.json
