@@ -11,7 +11,7 @@ cwd = os.getcwd()
 
 # Find all JSON files in the current working directory
 json_files = glob.glob(os.path.join(cwd, '*.json'))
-
+print(json_files)
 # Iterate over all JSON files in the current directory
 for json_file in json_files:
     # Extract the Python version and OS type from the file name
