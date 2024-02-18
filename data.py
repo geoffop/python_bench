@@ -60,9 +60,10 @@ benchmark_dataframe = benchmark_dataframe.dropna()
 # Group by 'os_type', 'python_ver', and 'test' and get the average
 benchmark_dataframe = benchmark_dataframe.groupby(['os_type', 'python_ver', 'test']).mean().reset_index()
 
-# Create a new column 'quantized_value' that quantizes the 'value' column into 4 bins within each group
-benchmark_dataframe['quantized_value'] = benchmark_dataframe.groupby(['os_type', 'python_ver', 'test'])['value'].transform(
-    lambda x: pd.cut(x, bins=4, labels=[3, 2, 1, 0])
+# Create a new column 'ranked_value' that ranks the 'value' column within each group
+# Lower 'value' will correspond to a higher 'ranked_value'
+benchmark_dataframe['ranked_value'] = benchmark_dataframe.groupby(['os_type', 'python_ver', 'test'])['value'].transform(
+    lambda x: x.rank(method='min', ascending=False)
 )
 
 print(benchmark_dataframe)
