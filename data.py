@@ -57,13 +57,12 @@ benchmark_dataframe['value'] = benchmark_dataframe['value'].astype(float)
 # Remove any rows with NaN as a value
 benchmark_dataframe = benchmark_dataframe.dropna()
 
-# Group by 'os', 'python_ver', and 'test' and get the average
+# Group by 'os_type', 'python_ver', and 'test' and get the average
 benchmark_dataframe = benchmark_dataframe.groupby(['os_type', 'python_ver', 'test']).mean().reset_index()
 
-# Create a new DataFrame that groups by 'os_type', 'python_ver', and 'test' and gets the minimum 'value' for each group
-min_values = benchmark_dataframe.groupby(['os_type', 'python_ver', 'test'])['value'].min().reset_index()
-
-# Create a new column 'quantized_value' that quantizes the 'value' column into 4 bins
-benchmark_dataframe['quantized_value'] = pd.cut(benchmark_dataframe['value'], bins=4, labels=False)
+# Create a new column 'quantized_value' that quantizes the 'value' column into 4 bins within each group
+benchmark_dataframe['quantized_value'] = benchmark_dataframe.groupby(['os_type', 'python_ver', 'test'])['value'].transform(
+    lambda x: pd.cut(x, bins=4, labels=[3, 2, 1, 0])
+)
 
 print(benchmark_dataframe)
