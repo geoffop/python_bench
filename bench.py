@@ -10,5 +10,4 @@ parser.add_argument('--python_ver', type=str, required=True, help='The Python ve
 args = parser.parse_args()
 
 # Run pyperformance with specified benchmarks and output to a JSON file
-# subprocess.run(["pyperformance", "run", "-f", "-o", f"{args.os_type}_{args.python_ver}.json", "-b", "2to3,chameleon,docutils,html5lib,tornado_http"], check=True)
-subprocess.run(["pyperformance", "run", "-f", "-o", f"{args.os_type}_{args.python_ver}.json", "-b", "2to3,chameleon"], check=True)
+subprocess.run(["pyperformance", "run", "-f", "-o", f"{args.os_type}_{args.python_ver}.json", "-b", "2to3,chameleon,docutils,html5lib,tornado_http"], check=True)
