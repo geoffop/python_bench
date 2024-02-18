@@ -44,7 +44,7 @@ for json_file in json_files:
 
 # Convert the results list into a pandas DataFrame
 benchmark_dataframe = pd.DataFrame(benchmark_results)
-
+print(benchmark_dataframe)
 # Ensure the 'values' column is a list
 benchmark_dataframe['value'] = benchmark_dataframe['value'].apply(lambda x: list(x) if isinstance(x, tuple) else x)
 
