@@ -62,7 +62,7 @@ benchmark_dataframe = benchmark_dataframe.groupby(['os_type', 'python_ver', 'tes
 
 # Create a new column 'ranked_value' that ranks the 'value' column within each group
 # Lower 'value' will correspond to a higher 'ranked_value'
-benchmark_dataframe['ranked_value'] = benchmark_dataframe.groupby(['os_type', 'python_ver', 'test'])['value'].transform(
+benchmark_dataframe['ranked_value'] = benchmark_dataframe.groupby(['test'])['value'].transform(
     lambda x: x.rank(method='min', ascending=False)
 )
 
