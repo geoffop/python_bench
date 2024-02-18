@@ -9,10 +9,10 @@ benchmark_results = []
 # Get the current working directory
 cwd = os.getcwd()
 
-# Find all JSON files in the current working directory
-json_files = glob.glob(os.path.join(cwd, '*.json'))
-print(json_files)
-# Iterate over all JSON files in the current directory
+# Find all JSON files in the current working directory and its subdirectories
+json_files = glob.glob(os.path.join(cwd, '**', '*.json'), recursive=True)
+
+# Iterate over all JSON files
 for json_file in json_files:
     # Extract the Python version and OS type from the file name
     os_type, python_version = os.path.splitext(os.path.basename(json_file))[0].split('_')
@@ -44,7 +44,7 @@ for json_file in json_files:
 
 # Convert the results list into a pandas DataFrame
 benchmark_dataframe = pd.DataFrame(benchmark_results)
-print(benchmark_dataframe)
+
 # Ensure the 'values' column is a list
 benchmark_dataframe['value'] = benchmark_dataframe['value'].apply(lambda x: list(x) if isinstance(x, tuple) else x)
 
