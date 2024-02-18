@@ -62,3 +62,9 @@ jobs:
       - name: Manage data
         run: |
           python data.py
+      
+      - name: Upload benchmark results
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-results
+          path: ./results.json
